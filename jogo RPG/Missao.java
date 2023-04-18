@@ -38,9 +38,9 @@ public class Missao {
         if (destino_y < 0) destino_y = -destino_y;
     }
 
-    // ============================================================
-    // Contador de pontuação do jogador 
-    // ============================================================
+    // ============================================================ //<---
+    // Contador de pontuação do jogador  //<---
+    // ============================================================ //<---
     public static void incrementar_pontuacao(){ //<---
         pontuacao += 1; //<---
     } //<---
@@ -84,6 +84,10 @@ public class Missao {
 
     public boolean get_completa() {
         return missao_completa;
+    }
+
+    public static int get_pontuacao(){
+        return pontuacao;
     }
 
     // ***************************************************************************************

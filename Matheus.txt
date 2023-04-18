@@ -1,2 +1,4 @@
 BUGS:
-1 - mudar variavel GERADOR da classe Missao, para gerar apenas numeros positivos
+1 - Foi mudado o NextInt() para gerar numeros de 1 a 4 na classe Missao;
+2 - Foi adicionado um contador na classe Missao;
+3 - Foi incrementado uma funcionalidade para incrementar o contador sempre que uma missao for concluida;

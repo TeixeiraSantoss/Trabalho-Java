@@ -9,6 +9,17 @@ class Controle {
     static Jogador player;
     static GerenciadorMissoes missoes;
 
+    static boolean mensagem; //<---
+    
+    public static void set_mensagem(boolean mensagem) { //<---
+        Controle.mensagem = mensagem; //<---
+    } //<---
+
+
+    public static boolean get_mensagem() { //<---
+        return mensagem; //<---
+    } //<---
+
     static String mapa[][] =
     { 
         { "x", "x", "x", "x", "x", "x" },
@@ -32,6 +43,12 @@ class Controle {
         //// Limpa a tela
         tela.limpar_tela();
 
+        //IF para verificar se a mensagem é TRUE ou FALSE //<---
+        if(mensagem == true){ //<---
+            System.out.println("Parabéns você concluiu a missão"); //<---
+            mensagem = false; //<---
+        } //<---
+
         //// Mostra as missões ativas
         /* Obtém a lista de missões */
         String missoes_ativas = missoes.mostrar_missoes();
@@ -50,9 +67,17 @@ class Controle {
 
         //// Processa a entrada do usuário
         processar_comando(direcao);
-
     }
-    
+
+
+    // ============================================================ //<---
+    // Método que recebe a posição da missão //<---
+    // ============================================================ //<---
+    public static boolean eh_destino(int x, int y) { //<---
+        return missoes.eh_destino(x, y); //<---
+    } //<---
+
+
     // ============================================================
     // Método que realiza os procedimentos necessários para cada
     // comando do usuário
@@ -71,7 +96,12 @@ class Controle {
             nova_posicao_y--;
         } else if (comando.equalsIgnoreCase("s")) {
             nova_posicao_y++;
-        }
+        } 
+        
+        //IF para receber a tecla "q" e encerrar o programa //<---
+        else if (comando.equalsIgnoreCase("q")) { //<---
+            System.exit(0); //<---       
+        } //<---
 
         /* Se tiver uma parede onde ele quer ir, não faz nada */
         if (mapa[nova_posicao_y][nova_posicao_x].equals("x")) {
@@ -110,10 +140,23 @@ class Controle {
         /* Nossas missões */
         missoes = new GerenciadorMissoes();
 
+        //Definido a mensagem para FALSE como padrão //<---
+        mensagem = false; //<---
 
         //// Inicia o jogo
         while(true) {
             operacao();
+
+            //SWITCH para receber a tecla "q" e encerrar o programa //<---
+            switch("q"){ //<---
+                case "q": //<---
+                    break; //<---
+            } //<---
+
+            //IF para encerrar o programa quando todas as missões forem feitas //<---
+            if (Missao.get_pontuacao() == 3){ //<---
+                System.exit(0); //<---
+            } //<---
         }
     }
 }

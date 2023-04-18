@@ -35,6 +35,12 @@ public class View {
                     System.out.print("M");
 
                 }
+
+                /* Mostrando destino da missao */ //<---
+                else if (Controle.eh_destino(x, y)) { //<---
+                    System.out.print("D"); //<---
+                } //<---
+
                 /* Caso não tenha nada no local */
                 else {
                     System.out.print(mapa[y][x]);
@@ -51,6 +57,7 @@ public class View {
     // ============================================================
     public void mostrar_missoes_ativas(String missoes_ativas) {
         System.out.println(missoes_ativas); 
+        System.out.println("Pontuação: " + Missao.get_pontuacao());
     }
 
     // ============================================================
@@ -59,6 +66,11 @@ public class View {
     public String obter_direcao() {
         /* Pede um direção para andar */
         System.out.println("Digite uma direção: (W, A, S, D)");
+
+        //implementando a tecla "Q" para encerrar o programa //<---
+        System.out.println("Sair : (Q)"); //<---
+
+
 
         /* Obtém a resposta */
         String entrada = sc.nextLine();

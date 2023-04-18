@@ -52,6 +52,8 @@ public class GerenciadorMissoes {
                 /* Completar missão */
                 this.completar_missao(i);
 
+                //Setando a mensagem para TRUE após a missão ser concluida //<---
+                Controle.mensagem = true; //<---
 
             }
         }
